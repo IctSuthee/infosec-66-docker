@@ -1,0 +1,35 @@
+version : '3'
+
+services :
+  db :
+    container_name : 'suthee-postgres'
+    ports:
+      - 54322:5432
+    environment :
+      - POSTGRES_USER=suthee
+      - POSTGRES_PASSWORD=ictlnwgame5
+    image : 'postgres:14.4'
+    restart : 'unless-stopped'
+  pgadmin :
+    container_name : 'suthee-pgadmin'
+    ports:
+      - 8079:80
+    environment :
+      - PGADMIN_DEFAULT_EMAIL=suthee199999@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=ictlnwgame5
+    image : 'dpage/pgadmin4:latest'
+    restart : 'unless-stopped'
+  strapi :
+    container_name : 'suthee-strapi'
+    ports:
+      - 13371:1337
+    environment :
+      - DATABASE_CLIENT=postgres
+      - DATABASE_HOST=192.168.56.1
+      - DATABASE_PORT=54322
+      - DATABASE_NAME=suthee
+      - DATABASE_USERNAME=suthee
+      - DATABASE_PASSWORD=ictlnwgame5
+      - DATABASE_SSL=false
+    image : 'naskio/strapi:latest'
+    restart : 'unless-stopped'
