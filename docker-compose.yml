@@ -22,7 +22,7 @@ services :
   strapi :
     container_name : 'suthee-strapi'
     ports:
-      - 13371:1337
+      - 1337:1337
     environment :
       - DATABASE_CLIENT=postgres
       - DATABASE_HOST=192.168.56.1
